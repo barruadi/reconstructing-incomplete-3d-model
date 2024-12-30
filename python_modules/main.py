@@ -45,8 +45,14 @@ match (type_iniital_guess):
     case _:
         print("invalid input")
 
+# NORMALIZE DATA
+normalized_points, mean, std = normalize_data(initial_guess)
+
 # APPLY SVD FOR RECONSTRUCTION
-reconstructed_points = svd_reconstruction(initial_guess)
+reconstructed_normalized = svd_reconstruction(normalized_points)
+
+# DENORMALIZE THE RECONSTRUCTED DATA
+reconstructed_points = denormalize_data(reconstructed_normalized, mean, std)
 
 # CALCULATE RMSE
 rmse = calculate_rmse(original_points, reconstructed_points)
