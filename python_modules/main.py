@@ -58,9 +58,13 @@ reconstructed_points = denormalize_data(reconstructed_normalized, mean, std)
 rmse = calculate_rmse(original_points, reconstructed_points)
 print("RMSE:", rmse)
 
-
+missing_initial_guess = initial_guess[np.isnan(points_with_missing).any(axis=1)]
 # VISUALIZE THE RESULTS
-visualize_3d(original_points, points_with_missing, reconstructed_points)
+# visualize_3d(original_points, points_with_missing, reconstructed_points)
+visualize_preprocess(missing_initial_guess)
 reconstructed_df = pd.DataFrame(reconstructed_points, columns=['x', 'y', 'z'])
-reconstructed_df.to_csv("reconstructed_point_cloud.csv", index=False)
-print("Reconstructed point cloud saved to 'reconstructed_point_cloud.csv'")
+reconstructed_df.to_csv("reconstructed.csv", index=False)
+print("Reconstructed point cloud saved to 'reconstructed.csv'")
+
+initial_guess_df = pd.DataFrame(missing_initial_guess, columns=['x', 'y', 'z'])
+initial_guess_df.to_csv("initial_guess.csv", index=False)

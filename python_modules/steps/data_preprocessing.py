@@ -25,11 +25,3 @@ def replace_missing_with_local_mean(points, radius=0.5):
                     filled_points[i] = np.nanmean(non_missing_points, axis=0)
 
     return filled_points
-
-def normalize_data(points):
-    mean = np.nanmean(points, axis=0)
-    std = np.nanstd(points, axis=0)
-    normalized_points = (points - mean) / (std + 1e-8)
-    return normalized_points, mean, std
-
-# normalized_points, mean, std = normalize_data(initial_guess)

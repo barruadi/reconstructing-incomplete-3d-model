@@ -3,7 +3,8 @@ import pandas as pd
 import numpy as np
 
 def load_dataset(file_path):
-    path = os.path.join(os.getcwd(), "model", file_path)
+    file_path += ".csv"
+    path = os.path.join(os.getcwd(), "dataset", "chair-2", file_path)
     return pd.read_csv(path).to_numpy()
 
 def load_multiple_datasets(file_paths):
