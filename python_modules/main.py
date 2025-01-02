@@ -17,17 +17,12 @@ match type_model:
 
     case 2:
         # CSV
-        type_dataset = int(input(">>> "))
-        match type_dataset:
-            case 1:
-                # INPUT CSV PATH
-                original_csv_path = input("Enter the path to the CSV file containing the original points: ").strip()
-                missing_csv_path = input("Enter the path to the CSV file containing the points with missing values: ").strip()
-
-                original_points = load_dataset(original_csv_path)
-                points_with_missing = load_dataset(missing_csv_path)
-            case 2:
-                print("multiple datasets")
+            
+        # INPUT CSV PATH
+        original_csv_path = input("Enter the path to the CSV file containing the original points: ").strip()
+        missing_csv_path = input("Enter the path to the CSV file containing the points with missing values: ").strip()
+        original_points = load_dataset(original_csv_path)
+        points_with_missing = load_dataset(missing_csv_path)
 
     case _:
         print("invalid input")
